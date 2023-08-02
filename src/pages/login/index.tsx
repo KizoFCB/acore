@@ -1,21 +1,14 @@
 import { pathnames } from "routes";
-import theme from "theme";
-import { ErrorMessage } from "@hookform/error-message";
-import {
-  Stack,
-  Box,
-  Typography,
-  FormControl,
-  TextField,
-  Button,
-} from "@mui/material";
-import CoverImage from "assets/cover.jpeg";
+import { Stack, Box, Typography, Button, useTheme } from "@mui/material";
+import CoverImage from "assets/cover.jpg";
+import Logo from "assets/logo.png";
 import { useEffect, useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import TextInput from "components/textInput";
 
 const Login = () => {
+  const theme = useTheme();
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
 
@@ -39,19 +32,21 @@ const Login = () => {
 
   const handleFormSubmit = async () => {
     const currentValues = getValues();
+    console.log("form values", currentValues);
     if (isValid) {
-      try {
-        localStorage.setItem("token", "token");
-        navigate(pathnames.BOOKS);
-      } catch (error) {
-        console.log(error);
-      }
+      localStorage.setItem("token", "token");
+      //   navigate(pathnames.BOOKS);
+      window.location.reload();
     }
   };
 
   return (
     <Stack
-      sx={{ width: "100%", height: "100%", background: "lightblue" }}
+      sx={{
+        width: "100%",
+        height: "100%",
+        background: theme.palette.grey[500],
+      }}
       justifyContent="center"
       alignItems="center"
     >
@@ -60,7 +55,7 @@ const Login = () => {
           width: "80%",
           height: "60%",
           borderRadius: "16px",
-          background: "white",
+          background: theme.palette.secondary.main,
         }}
         direction="row"
         justifyContent="space-between"
@@ -82,7 +77,8 @@ const Login = () => {
               rules={{
                 required: "This field is required",
                 pattern: {
-                  value: /^$/,
+                  value:
+                    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
                   message: "Please enter a valid email format",
                 },
               }}
@@ -105,7 +101,7 @@ const Login = () => {
                     borderRadius: "8px",
                     paddingInline: "8px",
                     minHeight: "50px",
-                    backgroundColor: "#d3d3d3",
+                    backgroundColor: theme.palette.grey[500],
                   }}
                 />
               )}
@@ -145,12 +141,13 @@ const Login = () => {
                     borderRadius: "8px",
                     paddingInline: "8px",
                     minHeight: "50px",
-                    backgroundColor: "#d3d3d3",
+                    backgroundColor: theme.palette.grey[500],
                   }}
                 />
               )}
             />
             <Button
+              variant="contained"
               type="submit"
               disabled={!isValid}
               sx={{ marginTop: "4px", maxWidth: "150px", borderRadius: "8px" }}
@@ -162,15 +159,15 @@ const Login = () => {
 
           <Typography>Forgot password?</Typography>
 
-          {/* <Box
+          <Box
             component="img"
-            src={CoverImage}
+            src={Logo}
             alt="logo"
             sx={{
-              maxWidth: "200px",
+              maxWidth: "100px",
               height: "70px",
             }}
-          /> */}
+          />
         </Stack>
         <Box
           component="img"

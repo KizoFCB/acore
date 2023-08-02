@@ -1,6 +1,7 @@
 import { Navigate } from "react-router-dom";
 import Login from "pages/login";
 import { IRoute } from "interfaces/routes";
+import Books from "pages/books";
 
 export enum pathnames {
   LOGIN = "/login",
@@ -12,7 +13,7 @@ export enum pathnames {
 }
 
 export const protectedRoutes: IRoute[] = [
-  //   { path: pathnames.BOOKS, element: <Books /> },
+  { path: pathnames.BOOKS, element: <Books /> },
   //   { path: pathnames.ADD_BOOK, element: <AddBook /> },
   //   { path: pathnames.EDIT_BOOK, element: <EditBook /> },
   //   { path: pathnames.DELETE_BOOK, element: <DeleteBook /> },
@@ -20,6 +21,8 @@ export const protectedRoutes: IRoute[] = [
   //     path: pathnames.BOOK_DETAILS,
   //     element: <BookDetails />,
   //   },
+  { path: "/", element: <Navigate to={pathnames.BOOKS} /> },
+  { path: "/*", element: <Navigate to={pathnames.BOOKS} /> },
 ];
 
 export const publicRoutes: IRoute[] = [

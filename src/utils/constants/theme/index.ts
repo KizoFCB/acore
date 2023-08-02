@@ -4,17 +4,20 @@ const colors: PaletteOptions = {
   secondary: {
     main: "#FFFFFF",
   },
+  grey: {
+    500: "#E5E4E2",
+  },
   primary: {
-    main: "#AA442A",
+    main: "#0000FF",
   },
   warning: {
-    main: "#FFFFFF",
+    main: "#E4D00A",
   },
   success: {
-    main: "#FFFFFF",
+    main: "#50C878",
   },
   error: {
-    main: "#FFFFFF",
+    main: "#FF0000",
   },
 };
 
