@@ -13,6 +13,7 @@ import CoverImage from "assets/cover.jpeg";
 import { useEffect, useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import TextInput from "components/textInput";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -64,7 +65,7 @@ const Login = () => {
         direction="row"
         justifyContent="space-between"
       >
-        <Stack sx={{ padding: "32px" }}>
+        <Stack sx={{ padding: "32px" }} gap="16px">
           <Typography variant="subtitle1">
             Please enter your email address and password to access your account
           </Typography>
@@ -89,34 +90,24 @@ const Login = () => {
                 field: { onChange, value },
                 fieldState: { error },
               }) => (
-                <FormControl>
-                  <TextField
-                    id="email"
-                    value={value}
-                    variant="standard"
-                    type="text"
-                    fullWidth
-                    onChange={(event) => onChange(event.target.value)}
-                    error={error?.message ? true : false}
-                    placeholder="Email address"
-                    InputProps={{ disableUnderline: true }}
-                    sx={{
-                      borderRadius: "8px",
-                      paddingInline: "8px",
-                      minHeight: "50px",
-                      backgroundColor: "#d3d3d3",
-                    }}
-                  />
-                  <ErrorMessage
-                    style={{
-                      color: theme.palette.error.main,
-                      marginTop: "16px",
-                    }}
-                    errors={errors}
-                    name="email"
-                    as="p"
-                  />
-                </FormControl>
+                <TextInput
+                  id="email"
+                  value={value}
+                  variant="standard"
+                  type="text"
+                  fullWidth
+                  onChange={(event) => onChange(event.target.value)}
+                  errorMessage={error?.message || ""}
+                  placeholder="Email address"
+                  errors={errors}
+                  InputProps={{ disableUnderline: true }}
+                  sx={{
+                    borderRadius: "8px",
+                    paddingInline: "8px",
+                    minHeight: "50px",
+                    backgroundColor: "#d3d3d3",
+                  }}
+                />
               )}
             />
             <Controller
@@ -127,46 +118,36 @@ const Login = () => {
                 field: { onChange, value },
                 fieldState: { error },
               }) => (
-                <FormControl>
-                  <TextField
-                    id="password"
-                    value={value}
-                    fullWidth
-                    type={showPassword ? "text" : "password"}
-                    variant="standard"
-                    onChange={(event) => onChange(event.target.value)}
-                    error={error?.message ? true : false}
-                    placeholder="Password"
-                    InputProps={{
-                      disableUnderline: true,
-                      endAdornment: (
-                        <Box
-                          sx={{ cursor: "pointer" }}
-                          onClick={() => {
-                            setShowPassword((prev) => !prev);
-                          }}
-                        >
-                          {showPassword ? "Hide" : "Show"}
-                        </Box>
-                      ),
-                    }}
-                    sx={{
-                      borderRadius: "8px",
-                      paddingInline: "8px",
-                      minHeight: "50px",
-                      backgroundColor: "#d3d3d3",
-                    }}
-                  />
-                  <ErrorMessage
-                    style={{
-                      color: theme.palette.error.main,
-                      marginTop: "16px",
-                    }}
-                    errors={errors}
-                    name="password"
-                    as="p"
-                  />
-                </FormControl>
+                <TextInput
+                  id="password"
+                  value={value}
+                  fullWidth
+                  type={showPassword ? "text" : "password"}
+                  variant="standard"
+                  onChange={(event) => onChange(event.target.value)}
+                  errorMessage={error?.message || ""}
+                  placeholder="Password"
+                  InputProps={{
+                    disableUnderline: true,
+                    endAdornment: (
+                      <Box
+                        sx={{ cursor: "pointer" }}
+                        onClick={() => {
+                          setShowPassword((prev) => !prev);
+                        }}
+                      >
+                        {showPassword ? "Hide" : "Show"}
+                      </Box>
+                    ),
+                  }}
+                  errors={errors}
+                  sx={{
+                    borderRadius: "8px",
+                    paddingInline: "8px",
+                    minHeight: "50px",
+                    backgroundColor: "#d3d3d3",
+                  }}
+                />
               )}
             />
             <Button
@@ -179,7 +160,7 @@ const Login = () => {
             </Button>
           </Stack>
 
-          <Typography variant="subtitle2">Forgot passowrd?</Typography>
+          <Typography>Forgot password?</Typography>
 
           {/* <Box
             component="img"
