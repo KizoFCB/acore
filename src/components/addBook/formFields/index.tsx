@@ -3,7 +3,12 @@ import { IFormFields } from "interfaces/forms";
 import LeftSection from "../leftSection";
 import RightSection from "../rightSection";
 
-const FormFields = ({ errors, control }: IFormFields) => {
+const FormFields = ({
+  errors,
+  control,
+  handleFormReset,
+  submitHandler,
+}: IFormFields) => {
   return (
     <Stack
       component="form"
@@ -11,9 +16,14 @@ const FormFields = ({ errors, control }: IFormFields) => {
       justifyContent="space-between"
       alignItems="start"
       sx={{ padding: "32px" }}
+      onSubmit={submitHandler}
     >
       <LeftSection errors={errors} control={control} />
-      <RightSection errors={errors} control={control} />
+      <RightSection
+        errors={errors}
+        control={control}
+        handleFormReset={handleFormReset}
+      />
     </Stack>
   );
 };

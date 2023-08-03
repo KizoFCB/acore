@@ -6,7 +6,7 @@ import { ErrorMessage } from "@hookform/error-message";
 import { IFormFields } from "interfaces/forms";
 import TextInput from "components/textInput";
 
-const RightSection = ({ errors, control }: IFormFields) => {
+const RightSection = ({ errors, control, handleFormReset }: IFormFields) => {
   const theme = useTheme();
   const fileRef = useRef<HTMLInputElement>(null);
   const pdfRef = useRef<HTMLInputElement>(null);
@@ -169,6 +169,7 @@ const RightSection = ({ errors, control }: IFormFields) => {
       />
       <Stack direction="row" gap="16px" justifyContent="end">
         <Button
+          onClick={handleFormReset}
           sx={{
             borderRadius: "8px",
             textTransform: "none",

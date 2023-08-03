@@ -16,6 +16,8 @@ export interface BookForm {
 }
 
 export interface IFormFields {
+  handleFormReset?: () => void;
+  submitHandler?: React.FormEventHandler<HTMLFormElement> | undefined;
   errors: FieldErrors<BookForm>;
   control: Control<BookForm>;
 }

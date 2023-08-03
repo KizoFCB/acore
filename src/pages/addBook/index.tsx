@@ -1,8 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import { Stack, Typography, useTheme, Box } from "@mui/material";
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import FormFields from "components/addBook/formFields";
 import { BookForm } from "interfaces/forms";
+import { pathnames } from "routes";
 
 const AddBook = () => {
   const theme = useTheme();
@@ -23,12 +24,25 @@ const AddBook = () => {
   };
   const {
     control,
+    handleSubmit,
     formState: { errors, isValid },
-    watch,
+    reset,
   } = useForm<BookForm>({
     mode: "onChange",
     defaultValues: defaultValues,
   });
+
+  const handleFormReset = () => {
+    reset();
+    navigate(pathnames.BOOKS);
+  };
+
+  const onSubmit: SubmitHandler<BookForm> = (data) => {
+    console.log("form values", data);
+    if (isValid) {
+      navigate(pathnames.BOOKS);
+    }
+  };
 
   return (
     <Stack gap="16px" sx={{ marginTop: "16px", height: "100%" }}>
@@ -47,7 +61,12 @@ const AddBook = () => {
             borderRadius: "16px",
           }}
         >
-          <FormFields control={control} errors={errors} />
+          <FormFields
+            submitHandler={handleSubmit(onSubmit)}
+            control={control}
+            errors={errors}
+            handleFormReset={handleFormReset}
+          />
         </Box>
       </Stack>
     </Stack>
