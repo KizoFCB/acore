@@ -32,7 +32,6 @@ const Login = () => {
     console.log("form values", currentValues);
     if (isValid) {
       localStorage.setItem("token", "token");
-      //   navigate(pathnames.BOOKS);
       window.location.reload();
     }
   };

@@ -1,3 +1,4 @@
+import { Dayjs } from "dayjs";
 import { FieldErrors, Control } from "react-hook-form";
 
 export interface BookForm {
@@ -6,12 +7,12 @@ export interface BookForm {
   category: string;
   price: string;
   link: File;
-  coverImage: File;
+  coverImage: File | string;
   version: string;
   olderVersion: string;
   edition: string;
   isbn: string;
-  releaseDate: null;
+  releaseDate: Dayjs | null;
   brief: string;
 }
 

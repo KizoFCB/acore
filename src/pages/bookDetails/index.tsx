@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Stack, Typography, useTheme, Box, Button, Chip } from "@mui/material";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
-import BookCover from "assets/book.jpeg";
 import { pathnames } from "routes";
 import { BOOKS_ROWS } from "utils/constants/books";
 import DeleteDialog from "components/deleteDialog";
@@ -52,7 +51,7 @@ const BookDetails = () => {
                   <Box
                     component="img"
                     alt="book cover"
-                    src={BookCover}
+                    src={book?.coverImage}
                     sx={{
                       width: "150px",
                       height: "200px",
@@ -97,15 +96,15 @@ const BookDetails = () => {
                 <Stack gap="16px">
                   <Typography>{`By ${
                     book?.author
-                  } | ${new Date().toDateString()}`}</Typography>
-                  <Typography color="primary">$1</Typography>
+                  } | ${book?.releaseDate?.format("DD MMM YYYY")}`}</Typography>
+                  <Typography color="primary">{`$${book?.price}`}</Typography>
                   <Typography>{`ISBN: ${book?.isbn}`}</Typography>
                   <Typography>{`Version: ${book?.version}`}</Typography>
-                  <Chip label="Medical genetics" />
+                  <Chip label={book?.category} />
                 </Stack>
                 <Stack>
                   <Typography variant="subtitle1">Brief</Typography>
-                  <Typography>Book brief should be written here</Typography>
+                  <Typography>{book?.brief}</Typography>
                 </Stack>
               </Stack>
             </Stack>

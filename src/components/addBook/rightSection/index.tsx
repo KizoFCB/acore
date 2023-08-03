@@ -27,7 +27,10 @@ const RightSection = ({ errors, control, handleFormReset }: IFormFields) => {
                   ? {
                       component: "img",
                       alt: "book cover",
-                      src: URL.createObjectURL(value),
+                      src:
+                        typeof value !== "string"
+                          ? URL.createObjectURL(value)
+                          : value,
                     }
                   : {})}
                 sx={{

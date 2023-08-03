@@ -1,4 +1,5 @@
-import { pathnames } from "routes";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Divider,
   Menu,
@@ -8,8 +9,7 @@ import {
   Typography,
   useTheme,
 } from "@mui/material";
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import { pathnames } from "routes";
 
 const Navbar = () => {
   const theme = useTheme();
@@ -21,13 +21,16 @@ const Navbar = () => {
     setAnchorEl(event.currentTarget);
   };
 
+  const handleHomeNavigation = () => {
+    navigate(pathnames.BOOKS);
+  };
+
   const handleMenuClose = () => {
     setAnchorEl(null);
   };
 
   const handleLogout = () => {
     localStorage.removeItem("token");
-    // navigate(pathnames.LOGIN);
     window.location.reload();
   };
 
@@ -42,7 +45,12 @@ const Navbar = () => {
           background: theme.palette.secondary.main,
         }}
       >
-        <Typography color="primary" fontWeight={500}>
+        <Typography
+          color="primary"
+          fontWeight={500}
+          sx={{ cursor: "pointer" }}
+          onClick={handleHomeNavigation}
+        >
           Acore Admin Dashboard
         </Typography>
         <Typography
