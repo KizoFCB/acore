@@ -50,7 +50,7 @@ const EditBook = () => {
   };
 
   const onSubmit: SubmitHandler<BookForm> = (data) => {
-    console.log("form values", data);
+    console.log("Edit Book Form values", data);
     if (isValid) {
       navigate(pathnames.BOOKS);
     }

@@ -97,7 +97,7 @@ const LeftSection = ({ errors, control }: IFormFields) => {
               inputProps={{ "aria-label": "category" }}
             >
               {["First Category", "Second Category"]?.map((category) => (
-                <MenuItem value={category}>
+                <MenuItem value={category} key={category}>
                   <Typography>{category}</Typography>
                 </MenuItem>
               ))}
@@ -209,7 +209,7 @@ const LeftSection = ({ errors, control }: IFormFields) => {
               inputProps={{ "aria-label": "version" }}
             >
               {["1", "2"]?.map((version) => (
-                <MenuItem value={version}>
+                <MenuItem value={version} key={version}>
                   <Typography>{version}</Typography>
                 </MenuItem>
               ))}

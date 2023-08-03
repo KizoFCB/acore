@@ -1,6 +1,13 @@
 import { useEffect, useState } from "react";
 import { useForm, Controller } from "react-hook-form";
-import { Stack, Box, Typography, Button, useTheme } from "@mui/material";
+import {
+  Stack,
+  Box,
+  Typography,
+  Button,
+  useTheme,
+  Divider,
+} from "@mui/material";
 import TextInput from "components/textInput";
 import CoverImage from "assets/cover.jpg";
 import Logo from "assets/logo.png";
@@ -29,7 +36,7 @@ const Login = () => {
 
   const handleFormSubmit = async () => {
     const currentValues = getValues();
-    console.log("form values", currentValues);
+    console.log("Login Form values", currentValues);
     if (isValid) {
       localStorage.setItem("token", "token");
       window.location.reload();
@@ -56,7 +63,7 @@ const Login = () => {
         direction="row"
         justifyContent="space-between"
       >
-        <Stack sx={{ padding: "32px" }} gap="16px">
+        <Stack sx={{ padding: "40px", flex: 1.5 }} gap="16px">
           <Typography variant="subtitle1">
             Please enter your email address and password to access your account
           </Typography>
@@ -130,18 +137,26 @@ const Login = () => {
                 />
               )}
             />
+            <Typography color="primary" sx={{ cursor: "pointer" }}>
+              Forgot password?
+            </Typography>
+
             <Button
               variant="contained"
               type="submit"
-              sx={{ marginTop: "4px", maxWidth: "150px", borderRadius: "8px" }}
+              sx={{
+                marginTop: "4px",
+                maxWidth: "150px",
+                borderRadius: "8px",
+                textTransform: "none",
+              }}
               onClick={handleFormSubmit}
             >
-              Sign in
+              Sign In
             </Button>
           </Stack>
 
-          <Typography>Forgot password?</Typography>
-
+          <Divider sx={{ width: "100%" }} />
           <Box
             component="img"
             src={Logo}
@@ -157,6 +172,7 @@ const Login = () => {
           src={CoverImage}
           alt="landing image"
           sx={{
+            flex: 1,
             maxWidth: "40%",
             height: "100%",
             borderTopRightRadius: "16px",

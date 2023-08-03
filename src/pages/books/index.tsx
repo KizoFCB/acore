@@ -1,7 +1,20 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Stack, Typography, useTheme, Box, Button } from "@mui/material";
-import { DataGrid } from "@mui/x-data-grid";
+import {
+  Stack,
+  Typography,
+  useTheme,
+  Box,
+  Button,
+  Pagination,
+} from "@mui/material";
+import {
+  DataGrid,
+  gridPageCountSelector,
+  gridPageSelector,
+  useGridApiContext,
+  useGridSelector,
+} from "@mui/x-data-grid";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -89,6 +102,25 @@ const Books = () => {
     });
   }, []);
 
+  function CustomPagination() {
+    const apiRef = useGridApiContext();
+    const page = useGridSelector(apiRef, gridPageSelector);
+    const pageCount = useGridSelector(apiRef, gridPageCountSelector);
+    return (
+      <Stack direction="row">
+        <Pagination
+          color="primary"
+          count={pageCount}
+          page={page + 1}
+          sx={{
+            "& .MuiPaginationItem-root": { borderRadius: "4px" },
+          }}
+          onChange={(event, value) => apiRef.current.setPage(value - 1)}
+        />
+      </Stack>
+    );
+  }
+
   return (
     <Stack gap="16px" sx={{ marginTop: "16px" }}>
       <Typography variant="h4">Books</Typography>
@@ -123,13 +155,11 @@ const Books = () => {
       <Stack
         sx={{
           height: "100%",
-          // borderRadius: "40px 0 0 40px",
         }}
       >
         <Box
           sx={{
-            height: 400,
-            width: "100%",
+            height: "100%",
             background: theme.palette.secondary.main,
             borderRadius: "16px",
           }}
@@ -144,9 +174,15 @@ const Books = () => {
                 },
               },
             }}
+            slots={{
+              pagination: CustomPagination,
+            }}
             sx={{
+              width: "100%",
               borderRadius: "16px",
-              padding: "8px",
+              "& .MuiDataGrid-footerContainer": {
+                background: theme.palette.grey[500],
+              },
             }}
             pageSizeOptions={[6]}
             checkboxSelection={false}

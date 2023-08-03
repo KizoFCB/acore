@@ -5,7 +5,7 @@ const colors: PaletteOptions = {
     main: "#FFFFFF",
   },
   grey: {
-    500: "#E5E4E2",
+    500: "#EFF1FD",
   },
   primary: {
     main: "#0000FF",

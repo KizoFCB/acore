@@ -73,7 +73,7 @@ export const BOOKS_ROWS = [
     brief: "This is a sample brief",
   },
   {
-    id: "16",
+    id: 5,
     title: "Design Patterns",
     category: "Second Category",
     author: "nouran",
