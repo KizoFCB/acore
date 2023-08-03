@@ -9,7 +9,14 @@ const TextInput = ({ errorMessage, errors, sx, ...rest }: ITextField) => {
       <TextField
         {...rest}
         error={!!errorMessage}
-        sx={{ justifyContent: "center", ...sx }}
+        sx={{
+          justifyContent: "center",
+          borderRadius: "8px",
+          paddingInline: "8px",
+          minHeight: "50px",
+          backgroundColor: theme.palette.grey[500],
+          ...sx,
+        }}
       />
       {errors && (
         <ErrorMessage

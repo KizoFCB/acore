@@ -94,12 +94,6 @@ const Login = () => {
                   placeholder="Email address"
                   errors={errors}
                   InputProps={{ disableUnderline: true }}
-                  sx={{
-                    borderRadius: "8px",
-                    paddingInline: "8px",
-                    minHeight: "50px",
-                    backgroundColor: theme.palette.grey[500],
-                  }}
                 />
               )}
             />
@@ -134,12 +128,6 @@ const Login = () => {
                     ),
                   }}
                   errors={errors}
-                  sx={{
-                    borderRadius: "8px",
-                    paddingInline: "8px",
-                    minHeight: "50px",
-                    backgroundColor: theme.palette.grey[500],
-                  }}
                 />
               )}
             />

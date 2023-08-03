@@ -3,6 +3,7 @@ import Login from "pages/login";
 import { IRoute } from "interfaces/routes";
 import Books from "pages/books";
 import BookDetails from "pages/bookDetails";
+import AddBook from "pages/addBook";
 
 export enum pathnames {
   LOGIN = "/login",
@@ -14,7 +15,7 @@ export enum pathnames {
 
 export const protectedRoutes: IRoute[] = [
   { path: pathnames.BOOKS, element: <Books /> },
-  //   { path: pathnames.ADD_BOOK, element: <AddBook /> },
+  { path: pathnames.ADD_BOOK, element: <AddBook /> },
   //   { path: pathnames.EDIT_BOOK, element: <EditBook /> },
   {
     path: pathnames.BOOK_DETAILS,

@@ -87,8 +87,6 @@ const Books = () => {
           placeholder="Search"
           sx={{
             background: theme.palette.secondary.main,
-            borderRadius: "8px",
-            paddingInline: "8px",
             width: "350px",
             height: "40px",
           }}

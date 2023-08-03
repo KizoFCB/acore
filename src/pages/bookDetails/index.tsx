@@ -2,7 +2,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Stack, Typography, useTheme, Box, Button, Chip } from "@mui/material";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 import BookCover from "assets/book.jpeg";
-
 import { pathnames } from "routes";
 import { BOOKS_ROWS } from "utils/constants/books";
 
