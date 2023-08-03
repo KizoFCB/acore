@@ -17,7 +17,7 @@ const RightSection = ({ errors, control, handleFormReset }: IFormFields) => {
         control={control}
         name="coverImage"
         rules={{
-          required: "This field is required",
+          required: "Cover Image is required",
         }}
         render={({ field: { onChange, value }, fieldState: { error } }) => (
           <Stack gap="16px" sx={{ alignSelf: "center", alignItems: "center" }}>
@@ -92,7 +92,7 @@ const RightSection = ({ errors, control, handleFormReset }: IFormFields) => {
         control={control}
         name="link"
         rules={{
-          required: "This field is required",
+          required: "Book PDF is required",
         }}
         render={({ field: { onChange, value }, fieldState: { error } }) => (
           <Stack gap="16px" sx={{ alignSelf: "center", alignItems: "center" }}>
@@ -147,10 +147,10 @@ const RightSection = ({ errors, control, handleFormReset }: IFormFields) => {
         name="brief"
         control={control}
         rules={{
-          required: "This field is required",
+          required: "Book Brief is required",
           maxLength: {
             value: 800,
-            message: "This field has a max length of 800 characters",
+            message: "Book Brief has a max length of 800 characters",
           },
         }}
         render={({ field, fieldState: { error } }) => (

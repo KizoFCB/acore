@@ -21,7 +21,7 @@ const LeftSection = ({ errors, control }: IFormFields) => {
         control={control}
         name="title"
         rules={{
-          required: "This field is required",
+          required: "Book Title is required",
         }}
         render={({ field: { onChange, value }, fieldState: { error } }) => (
           <TextInput
@@ -42,7 +42,7 @@ const LeftSection = ({ errors, control }: IFormFields) => {
         control={control}
         name="author"
         rules={{
-          required: "This field is required",
+          required: "Book Author is required",
         }}
         render={({ field: { onChange, value }, fieldState: { error } }) => (
           <TextInput
@@ -63,7 +63,7 @@ const LeftSection = ({ errors, control }: IFormFields) => {
         name="category"
         control={control}
         rules={{
-          required: "This field is required",
+          required: "Book Category is required",
         }}
         render={({ field, fieldState: { error } }) => (
           <Box sx={{ width: "100%" }}>
@@ -118,7 +118,7 @@ const LeftSection = ({ errors, control }: IFormFields) => {
         control={control}
         name="price"
         rules={{
-          required: "This field is required",
+          required: "Book Price is required",
         }}
         render={({ field: { onChange, value }, fieldState: { error } }) => (
           <TextInput
@@ -157,7 +157,7 @@ const LeftSection = ({ errors, control }: IFormFields) => {
         control={control}
         name="version"
         rules={{
-          required: "This field is required",
+          required: "Book Version is required",
         }}
         render={({ field: { onChange, value }, fieldState: { error } }) => (
           <TextInput
@@ -248,7 +248,7 @@ const LeftSection = ({ errors, control }: IFormFields) => {
         control={control}
         name="isbn"
         rules={{
-          required: "This field is required",
+          required: "Book ISBN is required",
           pattern: {
             value: /^(?=(?:\D*\d){10}(?:(?:\D*\d){3})?$)[\d-]+$/,
             message: "Please enter a valid ISBN format",
@@ -272,9 +272,6 @@ const LeftSection = ({ errors, control }: IFormFields) => {
       <Controller
         control={control}
         name="releaseDate"
-        rules={{
-          required: "This field is required",
-        }}
         render={({
           field: { onChange, value, name },
           fieldState: { error },
