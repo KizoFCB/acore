@@ -11,15 +11,17 @@ const TextInput = ({ errorMessage, errors, sx, ...rest }: ITextField) => {
         error={!!errorMessage}
         sx={{ justifyContent: "center", ...sx }}
       />
-      <ErrorMessage
-        style={{
-          color: theme.palette.error.main,
-          marginTop: "16px",
-        }}
-        errors={errors}
-        name={rest?.id || ""}
-        as="p"
-      />
+      {errors && (
+        <ErrorMessage
+          style={{
+            color: theme.palette.error.main,
+            marginTop: "16px",
+          }}
+          errors={errors}
+          name={rest?.id || ""}
+          as="p"
+        />
+      )}
     </FormControl>
   );
 };

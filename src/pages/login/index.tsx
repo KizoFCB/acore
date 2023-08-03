@@ -1,15 +1,12 @@
-import { pathnames } from "routes";
-import { Stack, Box, Typography, Button, useTheme } from "@mui/material";
-import CoverImage from "assets/cover.jpg";
-import Logo from "assets/logo.png";
 import { useEffect, useState } from "react";
 import { useForm, Controller } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { Stack, Box, Typography, Button, useTheme } from "@mui/material";
 import TextInput from "components/textInput";
+import CoverImage from "assets/cover.jpg";
+import Logo from "assets/logo.png";
 
 const Login = () => {
   const theme = useTheme();
-  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
 
   const defaultValues = {
@@ -149,7 +146,6 @@ const Login = () => {
             <Button
               variant="contained"
               type="submit"
-              disabled={!isValid}
               sx={{ marginTop: "4px", maxWidth: "150px", borderRadius: "8px" }}
               onClick={handleFormSubmit}
             >

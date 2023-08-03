@@ -1,3 +1,5 @@
+import { GridColDef } from "@mui/x-data-grid";
+
 export const BOOKS_ROWS = [
   {
     id: 0,
@@ -113,12 +115,18 @@ export const BOOKS_ROWS = [
   },
 ];
 
-export const BOOKS_COLUMNS = [
-  { field: "id", headerName: "ID", hide: true },
+export const BOOKS_COLUMNS: GridColDef[] = [
   { field: "title", headerName: "Book Title", sortable: false, flex: 1 },
   { field: "category", headerName: "Book Category", sortable: false, flex: 1 },
   { field: "author", headerName: "Book Author", sortable: false, flex: 1 },
   { field: "isbn", headerName: "Book ISBN", sortable: false, flex: 1 },
-  { field: "version", headerName: "Book Version", sortable: false, flex: 1.5 },
-  { field: "actions", headerName: "Actions", sortable: false, flex: 1.5 },
+  { field: "version", headerName: "Book Version", sortable: false, flex: 1 },
+  {
+    field: "actions",
+    headerName: "Actions",
+    sortable: false,
+    flex: 0.5,
+    headerAlign: "right",
+    align: "right",
+  },
 ];
