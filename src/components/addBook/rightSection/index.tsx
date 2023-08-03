@@ -160,9 +160,11 @@ const RightSection = ({ errors, control, handleFormReset }: IFormFields) => {
             placeholder="Book Brief *"
             {...field}
             variant="standard"
+            helperText={`${field.value.length}/800`}
             InputProps={{ disableUnderline: true }}
             sx={{
               p: 1,
+              "& .MuiFormHelperText-root": { textAlign: "right" },
             }}
           />
         )}

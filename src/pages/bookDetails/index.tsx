@@ -1,19 +1,27 @@
+import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Stack, Typography, useTheme, Box, Button, Chip } from "@mui/material";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 import BookCover from "assets/book.jpeg";
 import { pathnames } from "routes";
 import { BOOKS_ROWS } from "utils/constants/books";
+import DeleteDialog from "components/deleteDialog";
 
 const BookDetails = () => {
   const theme = useTheme();
   const navigate = useNavigate();
+  const [open, setOpen] = useState(false);
   const { id: bookId } = useParams();
   const book = BOOKS_ROWS[+(bookId || "0")];
 
   const handleEditBook = (bookId: string) =>
     navigate(pathnames.EDIT_BOOK.replace(":id", bookId));
-  const handleDeleteBook = (bookId: string) => {};
+  const handleDeleteBook = (bookId: string) => {
+    navigate(pathnames.BOOKS);
+  };
+
+  const handleClose = () => setOpen(false);
+  const handleOpen = () => setOpen(true);
 
   return (
     <Stack gap="16px" sx={{ marginTop: "16px", height: "100%" }}>
@@ -106,7 +114,7 @@ const BookDetails = () => {
                 variant="contained"
                 color="error"
                 sx={{ borderRadius: "8px", textTransform: "none" }}
-                onClick={handleDeleteBook?.bind(null, bookId || "")}
+                onClick={handleOpen}
               >
                 Delete
               </Button>
@@ -119,6 +127,11 @@ const BookDetails = () => {
                 Edit
               </Button>
             </Stack>
+            <DeleteDialog
+              open={open}
+              handleClose={handleClose}
+              handleConfirmation={handleDeleteBook?.bind(null, bookId || "")}
+            />
           </Stack>
         </Box>
       </Stack>

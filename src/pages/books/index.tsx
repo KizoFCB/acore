@@ -9,10 +9,13 @@ import SearchIcon from "@mui/icons-material/Search";
 import { BOOKS_COLUMNS, BOOKS_ROWS } from "utils/constants/books";
 import TextInput from "components/textInput";
 import { pathnames } from "routes";
+import DeleteDialog from "components/deleteDialog";
 
 const Books = () => {
   const theme = useTheme();
   const navigate = useNavigate();
+  const [deletedBookId, setDeletedBookId] = useState("");
+  const [open, setOpen] = useState(false);
   const [rows, setRows] = useState(BOOKS_ROWS);
   const [columns, setColumns] = useState(BOOKS_COLUMNS);
   const [searchValue, setSearchValue] = useState("");
@@ -22,7 +25,19 @@ const Books = () => {
     navigate(pathnames.EDIT_BOOK.replace(":id", bookId));
   const handleViewBook = (bookId: string) =>
     navigate(pathnames.BOOK_DETAILS.replace(":id", bookId));
-  const handleDeleteBook = (bookId: string) => {};
+  const handleDeleteBook = () => {
+    setRows((rows) => rows.filter((row) => row.id !== +deletedBookId));
+    handleClose();
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+    setDeletedBookId("");
+  };
+  const handleOpen = (bookId: string) => {
+    setDeletedBookId(bookId);
+    setOpen(true);
+  };
 
   const handleSearchChange:
     | React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>
@@ -62,7 +77,7 @@ const Books = () => {
                     sx={{ cursor: "pointer", "& :hover": { color: "green" } }}
                   />
                   <DeleteIcon
-                    onClick={handleDeleteBook?.bind(null, params?.row?.id)}
+                    onClick={handleOpen?.bind(null, params?.row?.id)}
                     sx={{ cursor: "pointer", "& :hover": { color: "red" } }}
                   />
                 </Stack>
@@ -139,6 +154,11 @@ const Books = () => {
           />
         </Box>
       </Stack>
+      <DeleteDialog
+        open={open}
+        handleClose={handleClose}
+        handleConfirmation={handleDeleteBook}
+      />
     </Stack>
   );
 };
