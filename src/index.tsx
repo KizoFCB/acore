@@ -1,11 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
 import { ThemeProvider } from "@mui/material/styles";
 import { BrowserRouter } from "react-router-dom";
 import theme from "theme";
+import "./index.css";
 import "./theme/globalStyle.css";
 import AppWithAuth from "components/appWithAuth";
+import Head from "components/head";
 import reportWebVitals from "./reportWebVitals";
 
 const root = ReactDOM.createRoot(
@@ -15,7 +16,10 @@ root.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <BrowserRouter>
-        <AppWithAuth />
+        <>
+          <Head />
+          <AppWithAuth />
+        </>
       </BrowserRouter>
     </ThemeProvider>
   </React.StrictMode>
