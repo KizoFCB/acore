@@ -17,6 +17,7 @@ const AppWithAuth = () => {
         />
       }
     >
+      {/* // TODO This is a HOC for routes to ensure that only a single batch is available based on the authenticated state */}
       <Routes>
         {!accessToken
           ? publicRoutes.map((route: IRoute, index: number) => {

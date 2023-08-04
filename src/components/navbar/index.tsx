@@ -30,6 +30,7 @@ const Navbar = () => {
   };
 
   const handleLogout = () => {
+    // TODO This should be a request to terminate the logged in session and redirect back to the login page
     localStorage.removeItem("token");
     window.location.reload();
   };
@@ -83,7 +84,6 @@ const Navbar = () => {
           <MenuItem>
             <Typography fontWeight={500}>admin@example.com</Typography>
           </MenuItem>
-          <Divider sx={{ width: "100%" }} />
           <MenuItem onClick={handleLogout}>
             <Typography fontWeight={500}>Logout</Typography>
           </MenuItem>

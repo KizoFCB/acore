@@ -67,6 +67,7 @@ const LeftSection = ({ errors, control }: IFormFields) => {
         }}
         render={({ field, fieldState: { error } }) => (
           <Box sx={{ width: "100%" }}>
+            {/* // TODO This dropdown component should be extracted to a shared component */}
             <Select
               fullWidth
               displayEmpty
@@ -279,6 +280,7 @@ const LeftSection = ({ errors, control }: IFormFields) => {
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DesktopDatePicker
               sx={{
+                // TODO These inline styles could be extracted to a separate styles file
                 borderRadius: "8px",
                 backgroundColor: theme.palette.grey[500],
                 "& .MuiInputBase-input": {

@@ -38,6 +38,7 @@ const Login = () => {
     const currentValues = getValues();
     console.log("Login Form values", currentValues);
     if (isValid) {
+      // TODO This should be an async function to actually login on the server/3rd party and fetch the respective token to be placed in the BE requests header moving forward then redirect to the books page
       localStorage.setItem("token", "token");
       window.location.reload();
     }
@@ -106,6 +107,7 @@ const Login = () => {
             <Controller
               control={control}
               name="password"
+              // TODO There should be a password criteria that is agreed upon to be also tested for validity
               rules={{ required: "This field is required" }}
               render={({
                 field: { onChange, value },

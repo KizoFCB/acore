@@ -2,7 +2,6 @@ import { TypographyOptions } from "@mui/material/styles/createTypography";
 
 const typography: TypographyOptions = {
   fontFamily: ["Roboto", "Helvetica", "Arial", "sans-serif", "inter"].join(","),
-
   h1: {
     fontSize: 60,
     fontWeight: 700,

@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import {
   DataGrid,
+  GridColDef,
   gridPageCountSelector,
   gridPageSelector,
   useGridApiContext,
@@ -23,14 +24,16 @@ import { BOOKS_COLUMNS, BOOKS_ROWS } from "utils/constants/books";
 import TextInput from "components/textInput";
 import { pathnames } from "routes";
 import DeleteDialog from "components/deleteDialog";
+import { BookFields } from "interfaces/forms";
 
 const Books = () => {
   const theme = useTheme();
   const navigate = useNavigate();
   const [deletedBookId, setDeletedBookId] = useState("");
   const [open, setOpen] = useState(false);
-  const [rows, setRows] = useState(BOOKS_ROWS);
-  const [columns, setColumns] = useState(BOOKS_COLUMNS);
+  // TODO This books array should be a BE request instead to fetch all books
+  const [rows, setRows] = useState<BookFields[]>(BOOKS_ROWS);
+  const [columns, setColumns] = useState<GridColDef[]>(BOOKS_COLUMNS);
   const [searchValue, setSearchValue] = useState("");
 
   const handleAddBook = () => navigate(pathnames.ADD_BOOK);
@@ -39,7 +42,8 @@ const Books = () => {
   const handleViewBook = (bookId: string) =>
     navigate(pathnames.BOOK_DETAILS.replace(":id", bookId));
   const handleDeleteBook = () => {
-    setRows((rows) => rows.filter((row) => row.id !== +deletedBookId));
+    // TODO This should actually be done on the server through a BE request and reflect a refetch for all books
+    setRows((rows) => rows.filter((row) => row?.id !== +deletedBookId));
     handleClose();
   };
 
@@ -61,6 +65,7 @@ const Books = () => {
   const handleSearchKeyDown:
     | React.KeyboardEventHandler<HTMLDivElement>
     | undefined = (e) => {
+    // TODO This search should also be a BE request that is done on the server and reflected on the books request
     if (e.key === "Enter") {
       setRows(
         BOOKS_ROWS?.filter(
@@ -103,6 +108,7 @@ const Books = () => {
   }, []);
 
   function CustomPagination() {
+    // TODO This pagination should also be server side through a BE request and reflect on the request to fetch all books
     const apiRef = useGridApiContext();
     const page = useGridSelector(apiRef, gridPageSelector);
     const pageCount = useGridSelector(apiRef, gridPageCountSelector);

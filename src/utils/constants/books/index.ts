@@ -1,6 +1,7 @@
 import dayjs from "dayjs";
 import { GridColDef } from "@mui/x-data-grid";
 
+// TODO This fake books JSON list should be a BE request to fetch all the books
 export const BOOKS_ROWS = [
   {
     id: 0,

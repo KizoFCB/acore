@@ -61,6 +61,7 @@ const RightSection = ({ errors, control, handleFormReset }: IFormFields) => {
                 hidden
                 sx={{ display: "none" }}
                 onChange={(e) => {
+                  // TODO Any file should be sent to the server to be uploaded and the server should return a link to the remote file that the FE can utilize
                   onChange(
                     (e?.target as EventTarget & HTMLInputElement)?.files?.[0]
                   );

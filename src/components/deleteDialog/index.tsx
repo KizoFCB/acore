@@ -28,7 +28,7 @@ const DeleteDialog = ({
       </DialogContent>
       <DialogActions>
         <Button onClick={handleClose}>No</Button>
-        <Button onClick={handleConfirmation} autoFocus>
+        <Button onClick={handleConfirmation} color="primary" autoFocus>
           Yes
         </Button>
       </DialogActions>

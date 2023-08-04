@@ -11,11 +11,16 @@ const BookDetails = () => {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const { id: bookId } = useParams();
+
+  // TODO This should be a BE request to fetch the book by id with all its values and maybe map them too
   const book = BOOKS_ROWS[+(bookId || "0")];
+  const numOfPages = 478;
+  const timeToReadInSeconds = 10800;
 
   const handleEditBook = (bookId: string) =>
     navigate(pathnames.EDIT_BOOK.replace(":id", bookId));
   const handleDeleteBook = (bookId: string) => {
+    // TODO This should be a BE request to delete the book and trigger a refetch to all books
     navigate(pathnames.BOOKS);
   };
 
@@ -69,7 +74,7 @@ const BookDetails = () => {
                   <Stack direction="row" gap="16px">
                     <Stack>
                       <Typography variant="subtitle2" color="primary">
-                        478
+                        {numOfPages}
                       </Typography>
                       <Typography
                         fontWeight={600}
@@ -80,7 +85,7 @@ const BookDetails = () => {
                     </Stack>
                     <Stack>
                       <Typography variant="subtitle2" color="primary">
-                        20h
+                        {`${Math.floor(timeToReadInSeconds / 3600)}h`}
                       </Typography>
                       <Typography
                         fontWeight={600}

@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { Stack, Typography, useTheme, Box } from "@mui/material";
 import { SubmitHandler, useForm } from "react-hook-form";
 import FormFields from "components/addBook/formFields";
-import { BookForm } from "interfaces/forms";
+import { BookFields } from "interfaces/forms";
 import { pathnames } from "routes";
 
 const AddBook = () => {
@@ -27,7 +27,7 @@ const AddBook = () => {
     handleSubmit,
     formState: { errors, isValid },
     reset,
-  } = useForm<BookForm>({
+  } = useForm<BookFields>({
     mode: "onChange",
     defaultValues: defaultValues,
   });
@@ -37,9 +37,11 @@ const AddBook = () => {
     navigate(pathnames.BOOKS);
   };
 
-  const onSubmit: SubmitHandler<BookForm> = (data) => {
+  const onSubmit: SubmitHandler<BookFields> = (data) => {
     console.log("Add Book form values", data);
     if (isValid) {
+      // TODO This should be an async function where we send the data to the server and maybe map the value beforehand to what the BE is expecting
+      // TODO This should trigger a refetch to get all the books
       navigate(pathnames.BOOKS);
     }
   };
