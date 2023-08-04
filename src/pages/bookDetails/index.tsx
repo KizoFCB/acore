@@ -76,10 +76,7 @@ const BookDetails = () => {
                       <Typography variant="subtitle2" color="primary">
                         {numOfPages}
                       </Typography>
-                      <Typography
-                        fontWeight={600}
-                        color={theme.palette.grey[500]}
-                      >
+                      <Typography fontWeight={600} color="grey">
                         Pages
                       </Typography>
                     </Stack>
@@ -87,10 +84,7 @@ const BookDetails = () => {
                       <Typography variant="subtitle2" color="primary">
                         {`${Math.floor(timeToReadInSeconds / 3600)}h`}
                       </Typography>
-                      <Typography
-                        fontWeight={600}
-                        color={theme.palette.grey[500]}
-                      >
+                      <Typography fontWeight={600} color="grey">
                         To read
                       </Typography>
                     </Stack>
